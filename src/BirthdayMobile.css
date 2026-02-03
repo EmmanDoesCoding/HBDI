@@ -55,9 +55,34 @@
 ========================= */
 @media (max-width: 768px) {
 
+.photo-gallery {
+    height: 180px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Disable auto-scroll animation on mobile */
   .photo-track {
-  animation: scrollLeft 60s linear infinite;
-}
+    animation: none !important;
+    display: flex;
+    gap: 20px;
+    padding: 0 20px;
+  }
+
+  /* Flatten structure so swipe feels natural */
+  .photo-set {
+    display: flex;
+    gap: 16px;
+    padding: 0;
+  }
+
+  /* Bigger touch targets */
+  .photo-item {
+    width: 160px;
+    height: 110px;
+    flex-shrink: 0;
+  }
 
 
   /* MUSIC PLAYER — FORCE COMPACT BAR */
