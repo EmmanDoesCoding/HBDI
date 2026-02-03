@@ -55,78 +55,46 @@
 ========================= */
 @media (max-width: 768px) {
 
-  /* Stack content vertically */
-  .birthday-wrapper {
-    flex-direction: column;
-    justify-content: flex-start;
-    padding-top: 20px;
-  }
-
-  /* Move gallery ABOVE the card */
-  .photo-gallery {
-    order: 1;
-    position: relative;     /* cancel fixed bottom */
-    bottom: auto;
-    height: 120px;
-    width: 100%;
-    margin-bottom: 20px;
-    overflow-x: auto;
-  }
-
-  /* Card comes after gallery */
-  .birthday-card {
-    order: 2;
-    max-width: 90vw;
-    padding: 30px 40px;
-    margin-bottom: 40px;
-  }
-
-  .birthday-card.smaller {
-    transform: scale(0.8);
-  }
-
-  .birthday-text {
-    font-size: 12vw;
-  }
-
-  .birthday-name {
-    font-size: 8vw;
-  }
-
-  .input-title {
-    font-size: 5vw;
-  }
-
-  .name-input,
-  .submit-button {
-    font-size: 4vw;
-    padding: 10px 12px;
-  }
-
-  /* Music player goes bottom center */
+  /* MUSIC PLAYER — FORCE COMPACT BAR */
   .music-player {
-    top: -15;
-    bottom: 15px;
+    position: fixed;
+    bottom: calc(15px + env(safe-area-inset-bottom));
     left: 50%;
     transform: translateX(-50%);
-    min-width: 220px;
+
+    height: auto !important;
+    max-height: 80px;
+    min-height: unset;
+
+    width: calc(100% - 30px);
+    max-width: 360px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 12px 16px;
+    border-radius: 20px;
+
+    z-index: 100;
   }
 
-  /* Modal fits phone screens */
-  .photo-modal-content {
-    width: 90%;
-    padding: 30px 15px 15px 15px;
+  /* Prevent inner items from stretching */
+  .music-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
-  .modal-image {
-    max-width: 90%;
-    height: auto;
+  .music-details {
+    line-height: 1.2;
   }
 
-  .photo-message {
-    font-size: 4vw;
+  .play-button {
+    flex-shrink: 0;
   }
 }
+
 
 /* =========================
    SMALL PHONES
