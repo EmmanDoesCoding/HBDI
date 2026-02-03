@@ -1,0 +1,480 @@
+.birthday-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.background-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1);
+  z-index: 0;
+}
+
+.background-layer.active {
+  opacity: 1;
+  transform: scale(1.1);
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+
+.bg1 {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.bg1.active {
+  opacity: 1;
+  transform: scale(1);
+  transition: none;
+}
+
+.bg1 {
+  background-image: url('/SECRET.jpg');
+}
+
+.bg2 {
+  background-image: url('/BG2.jpg');
+}
+
+.blur-overlay {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1;
+}
+
+.gradient-overlay {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  z-index: 2;
+}
+
+.birthday-card {
+  background: white;
+  border-radius: 20px;
+  padding: 60px 80px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  animation: fadeIn 0.5s ease-out;
+  transition: transform 0.6s ease-in-out, box-shadow 0.3s ease;
+  position: relative;
+  z-index: 3;
+}
+
+.birthday-card.smaller {
+  padding: 35px 50px 30px 50px;
+  transform: scale(0.7);
+}
+
+.birthday-card.slide-out {
+  transform: translateY(100vh);
+}
+
+.birthday-card:hover:not(.slide-out) {
+  transform: scale(1.05);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+}
+
+.birthday-card.smaller:hover:not(.slide-out) {
+  transform: scale(0.75);
+}
+
+.confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  animation: confettiFall 3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes confettiFall {
+  0% {
+    top: -10px;
+    opacity: 1;
+    transform: translateX(0) rotateZ(0deg);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    top: 110vh;
+    opacity: 0;
+    transform: translateX(100px) rotateZ(720deg);
+  }
+}
+
+.birthday-text {
+  font-size: 72px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.birthday-name {
+  font-size: 48px;
+  font-weight: bold;
+  color: #ff6b9d;
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.input-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;
+  font-family: 'Arial', sans-serif;
+}
+
+.name-input {
+  width: 100%;
+  padding: 15px 20px;
+  font-size: 20px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif;
+  outline: none;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+}
+
+.name-input:focus {
+  border-color: #4facfe;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 15px 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background-color: #ff6b9d;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'Arial', sans-serif;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.submit-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+}
+
+.photo-gallery {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  z-index: 4;
+  animation: slideInFromBottom 0.8s ease-out 0.5s backwards;
+}
+
+.photo-track {
+  display: flex;
+  animation: scrollLeft 60s linear infinite;
+  will-change: transform;
+  padding-top: 40px;
+}
+
+.photo-set {
+  display: flex;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.photo-item {
+  flex-shrink: 0;
+  width: 200px;
+  height: 130px;
+  border-radius: 10px;
+  overflow: visible;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.photo-item:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.click-hint {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  animation: pulseHint 2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.click-hint::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid rgba(0, 0, 0, 0.8);
+}
+
+@keyframes pulseHint {
+  0%, 100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-25%);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.music-player {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 6;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  min-width: 280px;
+}
+
+.music-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.music-icon {
+  font-size: 24px;
+}
+
+.music-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.song-title {
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+}
+
+.artist-name {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  font-family: 'Arial', sans-serif;
+}
+
+.play-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.play-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.play-button:active {
+  transform: scale(0.95);
+}
+
+.photo-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.photo-modal-content {
+  background: white;
+  border-radius: 20px;
+  padding: 50px 30px 30px 30px;
+  width: 500px;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: slideInUp 0.4s ease-out;
+}
+
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.2s;
+  color: #333;
+  line-height: 1;
+  z-index: 1;
+}
+
+.close-button:hover {
+  background: rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
+}
+
+.modal-image {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+
+.photo-message {
+  font-size: 20px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  padding: 10px 20px;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
