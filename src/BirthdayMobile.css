@@ -1,39 +1,175 @@
-/* BirthdayMobile.css */
+/* =========================================================
+   MOBILE + TABLET OVERRIDES ONLY
+   Desktop CSS remains untouched
+========================================================= */
+
+/* =========================
+   TABLETS & SMALL LAPTOPS
+========================= */
 @media (max-width: 1024px) {
-  .birthday-card { max-width: 85vw; padding: 35px 50px; }
-  .birthday-card.smaller { transform: scale(0.85); }
-  .birthday-text { font-size: 6vw; }
-  .birthday-name { font-size: 4.5vw; }
-  .input-title { font-size: 3.5vw; }
-  .name-input, .submit-button { font-size: 3vw; padding: 12px 15px; }
-  .photo-gallery { height: 130px; }
-  .photo-item { width: 140px; height: 90px; }
-  .music-player { flex-wrap: wrap; gap: 10px; }
+
+  .birthday-card {
+    max-width: 85vw;
+    padding: 35px 50px;
+  }
+
+  .birthday-card.smaller {
+    transform: scale(0.85);
+  }
+
+  .birthday-text {
+    font-size: 6vw;
+  }
+
+  .birthday-name {
+    font-size: 4.5vw;
+  }
+
+  .input-title {
+    font-size: 3.5vw;
+  }
+
+  .name-input,
+  .submit-button {
+    font-size: 3vw;
+    padding: 12px 15px;
+  }
+
+  .photo-gallery {
+    height: 130px;
+  }
+
+  .photo-item {
+    width: 140px;
+    height: 90px;
+  }
+
+  .music-player {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
 }
 
+/* =========================
+   MOBILE PHONES
+========================= */
 @media (max-width: 768px) {
-  .birthday-card { max-width: 90vw; padding: 30px 40px; }
-  .birthday-card.smaller { transform: scale(0.8); }
-  .birthday-text { font-size: 12vw; }
-  .birthday-name { font-size: 8vw; }
-  .input-title { font-size: 5vw; }
-  .name-input, .submit-button { font-size: 4vw; padding: 10px 12px; }
-  .photo-gallery { height: 120px; overflow-x: auto; }
-  .photo-item { width: 120px; height: 80px; }
-  .music-player { top: auto; bottom: 15px; left: 50%; transform: translateX(-50%); }
-  .photo-modal-content { width: 90%; padding: 30px 15px 15px 15px; }
-  .modal-image { max-width: 90%; height: auto; }
-  .photo-message { font-size: 4vw; }
+
+  /* Stack content vertically */
+  .birthday-wrapper {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 20px;
+  }
+
+  /* Move gallery ABOVE the card */
+  .photo-gallery {
+    order: 1;
+    position: relative;     /* cancel fixed bottom */
+    bottom: auto;
+    height: 120px;
+    width: 100%;
+    margin-bottom: 20px;
+    overflow-x: auto;
+  }
+
+  /* Card comes after gallery */
+  .birthday-card {
+    order: 2;
+    max-width: 90vw;
+    padding: 30px 40px;
+    margin-bottom: 40px;
+  }
+
+  .birthday-card.smaller {
+    transform: scale(0.8);
+  }
+
+  .birthday-text {
+    font-size: 12vw;
+  }
+
+  .birthday-name {
+    font-size: 8vw;
+  }
+
+  .input-title {
+    font-size: 5vw;
+  }
+
+  .name-input,
+  .submit-button {
+    font-size: 4vw;
+    padding: 10px 12px;
+  }
+
+  /* Music player goes bottom center */
+  .music-player {
+    top: auto;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 220px;
+  }
+
+  /* Modal fits phone screens */
+  .photo-modal-content {
+    width: 90%;
+    padding: 30px 15px 15px 15px;
+  }
+
+  .modal-image {
+    max-width: 90%;
+    height: auto;
+  }
+
+  .photo-message {
+    font-size: 4vw;
+  }
 }
 
+/* =========================
+   SMALL PHONES
+========================= */
 @media (max-width: 480px) {
-  .birthday-card { padding: 20px 25px; }
-  .birthday-card.smaller { transform: scale(0.75); }
-  .birthday-text { font-size: 14vw; }
-  .birthday-name { font-size: 10vw; }
-  .name-input, .submit-button { font-size: 3.5vw; padding: 8px 10px; }
-  .photo-item { width: 100px; height: 70px; }
-  .music-player { min-width: 180px; padding: 10px 12px; }
-  .modal-image { max-width: 95%; }
-  .photo-message { font-size: 5vw; }
+
+  .birthday-card {
+    padding: 20px 25px;
+  }
+
+  .birthday-card.smaller {
+    transform: scale(0.75);
+  }
+
+  .birthday-text {
+    font-size: 14vw;
+  }
+
+  .birthday-name {
+    font-size: 10vw;
+  }
+
+  .name-input,
+  .submit-button {
+    font-size: 3.5vw;
+    padding: 8px 10px;
+  }
+
+  .photo-item {
+    width: 100px;
+    height: 70px;
+  }
+
+  .music-player {
+    min-width: 180px;
+    padding: 10px 12px;
+  }
+
+  .modal-image {
+    max-width: 95%;
+  }
+
+  .photo-message {
+    font-size: 5vw;
+  }
 }
