@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import './Birthday.css';
+import './BirthdayMobile.css';
 
 export default function Birthday() {
   const [name, setName] = useState('');
