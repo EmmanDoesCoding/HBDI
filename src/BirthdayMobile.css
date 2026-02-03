@@ -84,6 +84,13 @@
     flex-shrink: 0;
   }
 
+  .photo-gallery::-webkit-scrollbar {
+  display: none;
+}
+.photo-gallery {
+  scrollbar-width: none;
+}
+
 
   /* MUSIC PLAYER — FORCE COMPACT BAR */
   .music-player {
